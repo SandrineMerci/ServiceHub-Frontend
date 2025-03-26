@@ -1,0 +1,120 @@
+/* General Layout */
+.authPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f8f8f8;
+  padding: 20px;
+}
+
+/* Welcome Section */
+.welcomeSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+  background: #ffffff;
+}
+
+.welcomeSection h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e00707;
+}
+
+.welcomeSection p {
+  font-size: 18px;
+  max-width: 80%;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Login Section */
+.authPage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 350px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* Login Inputs */
+.inputField {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #e00707;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #b50606;
+}
+
+/* Navbar Improvements */
+.navbar {
+  background: red;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .authPage {
+    flex-direction: column;
+  }
+
+  .welcomeSection {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .authContainer {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
