@@ -14,6 +14,7 @@ import CategoryPage from "./pages/CategoryPage";
 import BookingForm from "./components/BookingForm.jsx";
 import Authentication from "./pages/Authentication.jsx";
 import Review from "./components/Review.jsx";
+import Blog from "./pages/Blog.jsx";
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/authentication" element={<Authentication />} />
           <Route path="/review" element={<Review />} />
+          <Route path="/blog" element={<Blog />} />
          
                {/* Protected routes */}
         <Route element={<ProtectedRoute allowedRoles={["provider"]} />}>

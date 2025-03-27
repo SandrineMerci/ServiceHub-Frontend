@@ -7,6 +7,9 @@
   background: #f8f8f8;
   padding: 20px;
 }
+.h2{
+  color: #2e0a8e;
+}
 
 /* Welcome Section */
 .welcomeSection {
@@ -24,7 +27,7 @@
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #e00707;
+  color: #2e0a8e;
 }
 
 .welcomeSection p {
@@ -66,7 +69,7 @@
 button {
   width: 100%;
   padding: 12px;
-  background: #e00707;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   color: white;
   border: none;
   cursor: pointer;

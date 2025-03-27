@@ -1,0 +1,101 @@
+/* Blog.css */
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 100px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #e0e0e0;
+}
+
+.blog-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.blog-content {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #222;
+    line-height: 1.4;
+}
+
+.blog-info {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-info svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.blog-button {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: auto;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.blog-button:hover {
+    background: linear-gradient(135deg, #3a56e0, #2e0a8e);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
+}
+
+@media (max-width: 768px) {
+    .blog-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    
+    .blog-content {
+        padding: 20px;
+    }
+}

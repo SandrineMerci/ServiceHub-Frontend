@@ -97,7 +97,7 @@ const BookingForm = ({ serviceId: propServiceId, onClose }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Confirm Booking</button>
+          <button className={styles.coBook} type="submit">Confirm Booking</button>
         </form>
         {message && <p>{message}</p>}
         <button className={styles.close} onClick={handleClose}>

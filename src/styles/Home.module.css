@@ -12,7 +12,7 @@
   padding: 8px 15px; /* Reduced padding for a shorter button */
   font-size: 0.9rem; /* Slightly smaller font */
   color: #fff;
-  background-color: #E00707;
+  background:linear-gradient(135deg, #3a56e0, #2e0a8e);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -22,7 +22,7 @@
 
 
 .browseButton:hover {
-  background-color: #E00707;
+  background-color: #3156e0;
 }
 
 /* Hero Section */
@@ -123,7 +123,7 @@
 /* Smaller Icons */
 .categoryIcon {
   font-size: 24px; /* Reduced size */
-  color: #E00707;
+  color: #3a56e0;
   margin-bottom: 5px;
 }
 
@@ -138,8 +138,8 @@
 .viewAllButton {
   margin-top: 20px;
   padding: 8px 12px;
-  border: 1px solid #E00707;
-  background: #E00707;
+  border: 1px solid #3a56e0;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   color: white;
   font-size: 0.9rem;
   cursor: pointer;
@@ -150,7 +150,7 @@
 }
 
 .viewAllButton:hover {
-  background: 504B38;
+  background: #3156e0;
   color: white;
 }
 
@@ -181,7 +181,7 @@
   width: 50px;
   height: 50px;
   margin: 0 auto 10px;
-  background-color: #E00707;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   border-radius: 50%;
   font-size: 20px;
   font-weight: bold;
@@ -346,8 +346,8 @@ p {
 .ctaButton {
   margin-top: 20px;
   padding: 8px 12px;
-  border: 1px solid #E00707;
-  background: #E00707;
+  border: 1px solid #2e0a8e;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   color: white;
   font-size: 0.9rem;
   cursor: pointer;
@@ -358,7 +358,7 @@ p {
 }
 
 .ctaButton:hover {
-  background-color: #E00707;
+  background-color: #3156e0;
 }
 
 

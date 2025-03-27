@@ -28,7 +28,7 @@
 }
 
 .submitButton {
-  background: #e00707;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   color: white;
   padding: 10px;
   border: none;
@@ -37,7 +37,7 @@
 }
 
 .submitButton:hover {
-  background: #ee4e33;
+  background: #3156e0;
 }
 
 .message {

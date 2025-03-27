@@ -63,7 +63,7 @@
 .noService {
   font-size: 18px;
   font-weight: bold;
-  color: red;
+  color: #8697C4;
 }
 
 .service {
@@ -90,7 +90,7 @@
 .bookButton {
   font-size: 12px; /* Smaller button text */
   padding: 6px 9px; /* Reduce button size */
-  background-color: #E00707;
+  background: linear-gradient(135deg, #3a56e0, #2e0a8e);
   color: white;
   border: none;
   border-radius: 5px;
@@ -100,5 +100,5 @@
 }
 
 .bookButton:hover {
-  background-color: #E00707;
+  background-color: #adbbda;
 }
