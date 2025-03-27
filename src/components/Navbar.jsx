@@ -5,7 +5,7 @@ import styles from "../styles/Navbar.module.css";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { FaUserPlus } from "react-icons/fa6";
 import { SiAmazonsimpleemailservice } from "react-icons/si";
-import { FiStar, FiTrendingUp,FiHome,FiLogOut,FiCode } from "react-icons/fi";
+import { FiStar, FiTrendingUp,FiHome,FiLogOut,FiCode, FiSliders  } from "react-icons/fi";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -45,7 +45,7 @@ const Navbar = () => {
            
             {user.role === "admin" && (
               <>
-                <Link to="/admin-dashboard">Dashboard</Link>
+                <Link to="/admin-dashboard"><FiSliders />Dashboard</Link>
                
               </>
             )}

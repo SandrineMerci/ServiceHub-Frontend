@@ -26,8 +26,8 @@ const ServiceList = () => {
       try {
         const response = await axios.get(
           category
-            ? `http://localhost:5000/api/services?category=${category}`
-            : "http://localhost:5000/api/services"
+            ? `https://servicehub-backend.onrender.com/api/services?category=${category}`
+            : "https://servicehub-backend.onrender.com/api/services"
         );
         setServices(response.data);
       } catch (err) {

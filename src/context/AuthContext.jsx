@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   // Login function
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/login`, { email, password });
+      const response = await axios.post(`https://servicehub-backend.onrender.com/api/auth/login`, { email, password });
   
       // Log the response for debugging
       console.log("Login Response:", response);
