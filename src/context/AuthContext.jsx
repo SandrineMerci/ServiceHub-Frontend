@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   // Register function
   const register = async (name, email, password, role, phone, address) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/register`, {
+      const response = await axios.post(`https://servicehub-backend.onrender.com/api/auth/register`, {
         name,
         email,
         password,
