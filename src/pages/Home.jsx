@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import { FaTools, FaBroom, FaBolt, FaChalkboardTeacher, FaUtensils } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -177,9 +178,9 @@ const Home = () => {
      <div className={styles.footerColumn}>
       <h3 className={styles.footerTitle}>Quick Links</h3>
       <ul className={styles.footerList}>
-        <li><a href="Home.jsx" class="cta-button">Home</a></li>
-        <li><a href="#" class="cta-button">Services</a></li>
        
+        <li><Link to="/home">Home</Link></li>
+           <li> <Link to="/services">Services</Link></li>
       </ul>
     </div>
 

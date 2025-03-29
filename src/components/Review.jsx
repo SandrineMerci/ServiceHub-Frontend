@@ -14,7 +14,8 @@ const Review = ({ serviceId }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/services`);
+        const response = await axios.get(`https://servicehub-backend.onrender.com/api/services`);
+       console.log("Fetched Services:",response.data);
         setServices(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching services:", error);
@@ -27,7 +28,7 @@ const Review = ({ serviceId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/reviews`);
+        const response = await axios.get(`https://servicehub-backend.onrender.com/api/reviews`);
         console.log("Fetched reviews:", response.data); // Debugging
         setReviews(response.data);
       } catch (error) {
@@ -42,7 +43,7 @@ const Review = ({ serviceId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/reviews", {
+      await axios.post("https://servicehub-backend.onrender.com/api/reviews", {
         serviceId: selectedService,
         rating,
         comment,
@@ -66,7 +67,7 @@ const Review = ({ serviceId }) => {
       <div className={styles.reviewSection}>
         <h2 className={styles.heading}>Leave a Review</h2>
         <form className={styles.reviewForm} onSubmit={handleSubmit}>
-          <label className={styles.label}>Service Used</label>
+          {/* <label className={styles.label}>Service Used</label>
           <select
             className={styles.select}
             value={selectedService}
@@ -75,11 +76,11 @@ const Review = ({ serviceId }) => {
           >
             <option value="">-- Select a Service --</option>
             {services.map((service) => (
-              <option key={service.id} value={service.id}>
+              <option key={service.id} value={service.id} >
                 {service.name}
               </option>
             ))}
-          </select>
+          </select> */}
 
           <label className={styles.label}>Rating</label>
           <select
@@ -124,10 +125,10 @@ const Review = ({ serviceId }) => {
                   {"☆".repeat(5 - review.rating)}
                 </span>
                 <p className={styles.comment}>"{review.comment}"</p>
-                <div className={styles.userInfo}>
+                {/* <div className={styles.userInfo}>
                   <strong>{review.username || "Anonymous"}</strong>
                   <p>Used {review.serviceUsed || "this service"}</p>
-                </div>
+                </div> */}
               </div>
             ))
           ) : (

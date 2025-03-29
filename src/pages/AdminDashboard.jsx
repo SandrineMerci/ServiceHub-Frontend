@@ -5,6 +5,7 @@ import {
   FiAlertCircle, FiTrendingUp, FiCheckCircle 
 } from "react-icons/fi";
 import styles from "../styles/AdminDashboard.module.css";
+import LineChart from '../components/LineChart';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -13,6 +14,49 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("overview");
+
+  const bookingTrendData = {
+    labels: bookings.map(booking => 
+      new Date(booking.date).toLocaleDateString('en-US', { month: 'short' })
+    ),
+    datasets: [{
+      label: 'Bookings',
+      data: bookings.map((_, index) => index + 1), // Cumulative count
+      borderColor: '#4361ee',
+      backgroundColor: 'rgba(67, 97, 238, 0.1)',
+      tension: 0.3,
+      fill: true
+    }]
+  };
+  
+  const bookingTrendOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  };
+  
+  // Prepare user growth data
+  const userGrowthData = {
+    labels: users.map(user => 
+      new Date(user.createdAt).toLocaleDateString('en-US', { month: 'short' })
+    ),
+    datasets: [{
+      label: 'Users',
+      data: users.map((_, index) => index + 1), // Cumulative count
+      borderColor: '#4caf50',
+      backgroundColor: 'rgba(76, 175, 80, 0.1)',
+      tension: 0.3,
+      fill: true
+    }]
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +87,33 @@ const AdminDashboard = () => {
   const avgRating = reviews.length > 0 
     ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
     : 0;
+
+    const handleStatusUpdate = async (bookingId, newStatus) => {
+      try {
+        // Call your API endpoint to update the status
+        const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: newStatus }),
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to update status');
+        }
+    
+        // Update the UI state if using React state management
+        const updatedBookings = bookings.map(booking => 
+          booking._id === bookingId ? { ...booking, status: newStatus } : booking
+        );
+        setBookings(updatedBookings);
+    
+      } catch (error) {
+        console.error('Error updating status:', error);
+        // Optionally show error message to user
+      }
+    };
 
   return (
     <div className={styles.dashboard}>
@@ -133,16 +204,25 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className={styles.chartsContainer}>
-                  {/* Placeholder for charts - implement with Chart.js or similar */}
-                  <div className={styles.chart}>
-                    <h3>Bookings Trend</h3>
-                    <div className={styles.chartPlaceholder}></div>
-                  </div>
-                  <div className={styles.chart}>
-                    <h3>User Growth</h3>
-                    <div className={styles.chartPlaceholder}></div>
-                  </div>
-                </div>
+  <div className={styles.chart}>
+    <h3>Bookings Trend</h3>
+    <div className={styles.chartWrapper}>
+      <LineChart 
+        data={bookingTrendData} 
+        options={bookingTrendOptions} 
+      />
+    </div>
+  </div>
+  <div className={styles.chart}>
+    <h3>User Growth</h3>
+    <div className={styles.chartWrapper}>
+      <LineChart 
+        data={userGrowthData} 
+        options={bookingTrendOptions} 
+      />
+    </div>
+  </div>
+</div>
               </>
             )}
 
@@ -150,11 +230,11 @@ const AdminDashboard = () => {
               <div className={styles.tableContainer}>
                 <div className={styles.tableHeader}>
                   <h2>User Management</h2>
-                  <input 
+                  {/* <input 
                     type="text" 
                     placeholder="Search users..." 
                     className={styles.searchInput}
-                  />
+                  /> */}
                 </div>
                 <table className={styles.dataTable}>
                   <thead>
@@ -163,7 +243,7 @@ const AdminDashboard = () => {
                       <th>Email</th>
                       <th>Role</th>
                       <th>Joined</th>
-                      <th>Actions</th>
+                      {/* <th>Actions</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -192,9 +272,9 @@ const AdminDashboard = () => {
                             year: "numeric",
                           })}
                         </td>
-                        <td>
+                        {/* <td>
                           <button className={styles.actionButton}>Edit</button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -207,16 +287,16 @@ const AdminDashboard = () => {
                 <div className={styles.tableHeader}>
                   <h2>Booking Management</h2>
                   <div className={styles.filterControls}>
-                    <select className={styles.filterSelect}>
+                    {/* <select className={styles.filterSelect}>
                       <option>All Statuses</option>
                       <option>Pending</option>
                       <option>Completed</option>
                       <option>Cancelled</option>
-                    </select>
-                    <input 
+                    </select> */}
+                    {/* <input 
                       type="date" 
                       className={styles.dateFilter}
-                    />
+                    /> */}
                   </div>
                 </div>
                 <table className={styles.dataTable}>
@@ -226,7 +306,8 @@ const AdminDashboard = () => {
                       <th>Service</th>
                       <th>Date</th>
                       <th>Status</th>
-                      <th>Amount</th>
+                      <th>Action</th>
+                      {/* <th>Amount</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -250,7 +331,24 @@ const AdminDashboard = () => {
                             {booking.status}
                           </span>
                         </td>
-                        <td>${booking.price?.toFixed(2) || "0.00"}</td>
+                        <td>
+  {booking.status === "completed" ? (
+    <button
+      onClick={() => handleStatusUpdate(booking._id, "pending")}
+      className={`${styles.editButton} ${styles.secondaryButton}`}
+    >
+      Revert to Pending
+    </button>
+  ) : (
+    <button
+      onClick={() => handleStatusUpdate(booking._id, "completed")}
+      className={styles.editButton}
+    >
+      Mark Completed
+    </button>
+  )}
+</td>
+                        {/* <td>${booking.price?.toFixed(2) || "0.00"}</td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -261,36 +359,34 @@ const AdminDashboard = () => {
             {activeTab === "reviews" && (
               <div className={styles.reviewsGrid}>
                 {reviews.map((review) => (
-                  <div key={review._id} className={styles.reviewCard}>
-                    <div className={styles.reviewHeader}>
-                      <div className={styles.reviewer}>
-                        <div className={styles.avatar}>
-                          {review.username?.charAt(0) || "A"}
-                        </div>
-                        <h3>{review.username || "Anonymous"}</h3>
-                      </div>
-                      <div className={styles.rating}>
-                        {[...Array(5)].map((_, i) => (
-                          <FiStar 
-                            key={i} 
-                            className={`${styles.star} ${
-                              i < review.rating ? styles.filled : ""
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <p className={styles.comment}>{review.comment}</p>
-                    <div className={styles.reviewMeta}>
-                      <span>
-                        {new Date(review.createdAt).toLocaleDateString()}
-                      </span>
-                      <button className={styles.reviewAction}>
-                        <FiCheckCircle /> Approve
-                      </button>
-                    </div>
-                  </div>
-                ))}
+  <div key={review._id} className={styles.reviewCard}>
+    <div className={styles.reviewHeader}>
+      <div className={styles.reviewerInfo}>
+        <div className={styles.avatar}>
+          {review.username?.charAt(0) || 'A'}
+        </div>
+        <div>
+          <h3>{review.username || "Anonymous"}</h3>
+          <div className={styles.rating}>
+            {[...Array(5)].map((_, i) => (
+              <span 
+                key={i}
+                className={`${styles.star} ${i < review.rating ? styles.filled : ''}`}
+              >
+                {i < review.rating ? '★' : '☆'}
+              </span>
+            ))}
+            <span className={styles.ratingNumber}>{review.rating}.0</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles.reviewDate}>
+        {new Date(review.createdAt).toLocaleDateString()}
+      </div>
+    </div>
+    <p className={styles.comment}>{review.comment}</p>
+  </div>
+))}
               </div>
             )}
           </div>

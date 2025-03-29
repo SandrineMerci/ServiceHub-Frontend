@@ -49,7 +49,7 @@ const Navbar = () => {
                
               </>
             )}
-           <button onClick={handleLogout}>  <FiLogOut />Logout</button>
+           <button className={styles.logout} onClick={handleLogout}>  <FiLogOut />Logout</button>
           </>
         ) : (
           <>

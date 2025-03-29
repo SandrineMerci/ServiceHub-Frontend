@@ -3,7 +3,9 @@
   margin: 50px;
   padding: 20px;
 }
-
+.label{
+  color: black;
+}
 /* Leave a Review Section */
 .reviewFormSection {
   background: #f9f9f9;
@@ -38,6 +40,9 @@
 
 .submitButton:hover {
   background: #3156e0;
+}
+.option{
+  color: white;
 }
 
 .message {
@@ -83,4 +88,8 @@
   margin-top: 10px;
   font-size: 14px;
   color: #333;
+}
+.option {
+  padding: 10px;
+  color: #333; /* Ensures text is visible */
 }
